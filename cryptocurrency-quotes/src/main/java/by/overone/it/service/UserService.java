@@ -18,4 +18,16 @@ public class UserService {
     public void saveUser(User user) {
         userRepository.save(user);
     }
+
+    public User getUserById(String id) {
+        return userRepository.getById(id);
+    }
+
+    public void updateCryptoPrice(String price, String id) {
+        userRepository.updateCryptoPrice(price, id);
+    }
+
+    public void updateCryptoSymbol(String symbol, String id) {
+        userRepository.updateCryptoSymbol(symbol, id);
+    }
 }
