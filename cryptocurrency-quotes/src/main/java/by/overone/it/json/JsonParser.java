@@ -21,17 +21,23 @@ public class JsonParser {
     private Quote quote;
 
     @SneakyThrows
-    public Quote getJsonFromUrl(String cryptoId) {
+    public JSONObject getJsonFromUrl(String cryptoId) {
         final String PATH = "https://api.coinlore.net/api/ticker/?id=" + cryptoId;
         URL url = new URL(PATH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
         JSONParser parser = new JSONParser();
         JSONArray quoteJsonArray = (JSONArray) parser.parse(reader);
-        JSONObject quoteJsonObject = (JSONObject) quoteJsonArray.get(0);
-        String symbol = (String) quoteJsonObject.get("symbol");
-        String price = (String) quoteJsonObject.get("price_usd");
-        quote.setSymbol(symbol);
-        quote.setPrice(price);
+        return (JSONObject) quoteJsonArray.get(0);
+    }
+
+    public Quote getQuoteFromJson(String cryptoId) {
+        JSONObject jsonObject = getJsonFromUrl(cryptoId);
+        quote.setPrice((String) jsonObject.get("price_usd"));
+        quote.setSymbol((String) jsonObject.get("symbol"));
         return quote;
+    }
+
+    public String getPriceFromJson(String cryptoId) {
+        return (String) getJsonFromUrl(cryptoId).get("price_usd");
     }
 }
