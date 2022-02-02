@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class Quote {
     private String symbol;
     private String price;
+    private String percent_change;
 
     @Override
     public String toString() {

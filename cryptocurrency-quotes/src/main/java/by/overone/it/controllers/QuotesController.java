@@ -24,7 +24,7 @@ public class QuotesController {
     @GetMapping("/quotes-page/{id}")
     public String getQuotes(@PathVariable("id") String userId) {
         User user = userService.getUserById(userId);
-        Quote quote = jsonParser.getJsonFromUrl(
+        Quote quote = jsonParser.getQuoteFromJson(
                 getCryptoProperty.getProperty(
                         user.getCryptoSymbol()));
         userService.updateCryptoPrice(quote.getPrice(), userId);
