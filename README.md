@@ -6,6 +6,7 @@
 
 - Spring Boot
 - Spring Data JPA
+- Spring MVC (Controller/REST-controller)
 
 
 ## Реализовано из тз:
