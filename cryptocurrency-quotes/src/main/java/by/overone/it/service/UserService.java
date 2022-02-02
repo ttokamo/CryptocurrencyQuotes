@@ -5,6 +5,8 @@ import by.overone.it.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -29,5 +31,9 @@ public class UserService {
 
     public void updateCryptoSymbol(String symbol, String id) {
         userRepository.updateCryptoSymbol(symbol, id);
+    }
+
+    public List<User> getUsersByCryptoSymbol(String symbol) {
+        return userRepository.getUsersByCryptoSymbol(symbol);
     }
 }
